@@ -1,18 +1,5 @@
 import "./styles/style.css";
-import { useState } from "react";
-
-let tabsArray = [];
-
-chrome.tabs.query({}, (tabs) => {
-  tabsArray = [];
-  let i = 0;
-  for (i = 0; i < tabs.length; i++) {
-    console.log(tabs);
-    if (!tabs[i].active) {
-      tabsArray.push(tabs[i].url);
-    }
-  }
-});
+import { useState, useEffect } from "react";
 
 const dateToYMD = (date) => {
   var strArray = [
@@ -89,6 +76,18 @@ const exportTabs = (text, links) => {
 
 export default function App() {
   const [toggle, setToggle] = useState(true);
+  const [tabsArray, setTabsArray] = useState([]);
+
+  useEffect(() => {
+    console.log("I loaded");
+    chrome.tabs.query({}, (tabs) => {
+      let currentTabs = [];
+      for (let i = 0; i < tabs.length; i++) {
+        currentTabs.push(tabs[i].url);
+      }
+      setTabsArray(currentTabs);
+    });
+  }, []);
 
   const flip = () => {
     setToggle(!toggle);

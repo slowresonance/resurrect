@@ -3,9 +3,6 @@
   "name": "Resurrect",
   "version": "1.0.0",
   "description": "Rearrange your tabs by URL",
-  "background": {
-    "scripts": ["background.js"]
-  },
   "icons": {
     "128": "128.png"
   },
