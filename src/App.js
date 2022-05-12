@@ -32,9 +32,10 @@ const getFile = (event) => {
 function placeFileContent(target, file) {
   readFileContent(file)
     .then((content) => {
-      let links = content.split(",");
+      let links = content.split(/\r?\n/);
       for (let i = 0; i < links.length; i++) {
-        window.open(links[i]);
+        console.log(`${i}.opened ${links[i]} out of ${links.length}`);
+        chrome.tabs.create({ url: links[i] }, () => {});
       }
     })
     .catch((error) => console.log(error));
@@ -95,7 +96,7 @@ export default function App() {
 
   const handleEnter = (e) => {
     if (e.key === "Enter") {
-      exportTabs(e.target.value, tabsArray);
+      exportTabs(e.target.value, tabsArray.join("\n"));
       setToggle(!toggle);
     }
   };
