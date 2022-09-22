@@ -81,13 +81,13 @@ export default function App() {
 
   useEffect(() => {
     console.log("I loaded");
-    // chrome.tabs.query({}, (tabs) => {
-    //   let currentTabs = [];
-    //   for (let i = 0; i < tabs.length; i++) {
-    //     currentTabs.push(tabs[i].url);
-    //   }
-    //   setTabsArray(currentTabs);
-    // });
+    chrome.tabs.query({}, (tabs) => {
+      let currentTabs = [];
+      for (let i = 0; i < tabs.length; i++) {
+        currentTabs.push(tabs[i].url);
+      }
+      setTabsArray(currentTabs);
+    });
   }, []);
 
   const flip = () => {
