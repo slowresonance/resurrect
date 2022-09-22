@@ -25,6 +25,10 @@ body {
   margin: 0 2em;
 }
 
+#later {
+  width: 16ch;
+}
+
 #avada-kedavra,
 #resurrect > * {
   cursor: pointer;
@@ -36,7 +40,11 @@ input {
   outline: none;
   width: 15ch;
   padding: 5px 10px;
-  border-radius: 4px;
+  border-radius: 2px;
   color: #eee;
-  background: #222;
+  background: #1c1c1c;
+}
+
+input::placeholder {
+  color: #666;
 }

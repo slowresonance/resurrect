@@ -81,13 +81,13 @@ export default function App() {
 
   useEffect(() => {
     console.log("I loaded");
-    chrome.tabs.query({}, (tabs) => {
-      let currentTabs = [];
-      for (let i = 0; i < tabs.length; i++) {
-        currentTabs.push(tabs[i].url);
-      }
-      setTabsArray(currentTabs);
-    });
+    // chrome.tabs.query({}, (tabs) => {
+    //   let currentTabs = [];
+    //   for (let i = 0; i < tabs.length; i++) {
+    //     currentTabs.push(tabs[i].url);
+    //   }
+    //   setTabsArray(currentTabs);
+    // });
   }, []);
 
   const flip = () => {
@@ -107,20 +107,22 @@ export default function App() {
 
   return (
     <div id="app-container">
-      {toggle ? (
-        <div id="avada-kedavra" onClick={flip}>
-          save tabs for later
-        </div>
-      ) : (
-        <input
-          autoFocus
-          type="text"
-          placeholder="Save file as"
-          id="file-name-input"
-          onKeyDown={handleEnter}
-          onBlur={handleBlur}
-        />
-      )}
+      <div id="later">
+        {toggle ? (
+          <div id="avada-kedavra" onClick={flip}>
+            save tabs for later
+          </div>
+        ) : (
+          <input
+            autoFocus
+            type="text"
+            placeholder="Save file as"
+            id="file-name-input"
+            onKeyDown={handleEnter}
+            onBlur={handleBlur}
+          />
+        )}
+      </div>
 
       <div id="divider">
         <svg
